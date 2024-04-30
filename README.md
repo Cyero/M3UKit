@@ -30,15 +30,17 @@ let parser = PlaylistParser()
 The playlist parser can parse a playlist from any source that conforms to the protocol `PlaylistSource`, by default: `String`, and `URL`.
 
 ```swift
-let url = URL(string: "https://domain.com/link/to/m3u/file")
-let playlist = try parser.parse(url)
+let url = URL(string: "https://domain.com/link/to/m3u/file")!
+let playlist = try? parser.parse(url)
 ```
 
 or
 
 ```swift
+import Foundation
+
 let url = Bundle.main.url(forResource: "playlist", withExtension: "m3u")!
-let playlist = try parser.parse(url)
+let playlist = try? parser.parse(url)
 ```
 
 or
@@ -49,7 +51,7 @@ let raw = """
 #EXTINF:-1 tvg-id="DenHaagTV.nl",Den Haag TV (1080p)
 http://wowza5.video-streams.nl:1935/denhaag/denhaag/playlist.m3u8
 """
-let playlist = try parser.parse(raw)
+let playlist = try? parser.parse(raw)
 ```
 
 M3UKit also supports asynchronous parsing with a completion handler or with the new async/await API
