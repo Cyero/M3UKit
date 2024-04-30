@@ -24,10 +24,10 @@
 import Foundation
 
 /// A class to parse `Playlist` objects from a `PlaylistSource`.
-public final class PlaylistParser {
+public final class PlaylistParser: Sendable {
 
   /// Playlist parser options
-  public struct Options: OptionSet {
+  public struct Options: OptionSet, Sendable {
     public let rawValue: Int
 
     public init(rawValue: Int) {
@@ -161,7 +161,7 @@ public final class PlaylistParser {
     _ input: PlaylistSource,
     processingQueue: DispatchQueue = .global(qos: .background),
     callbackQueue: DispatchQueue = .main,
-    completion: @escaping (Result<Playlist, Error>) -> Void
+    completion: @escaping @Sendable (Result<Playlist, Error>) -> Void
   ) {
     processingQueue.async {
       do {
