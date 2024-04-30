@@ -24,7 +24,7 @@
 import Foundation
 
 /// Playlist source.
-public protocol PlaylistSource {
+public protocol PlaylistSource: Sendable {
   /// Playlist contents raw string.
   var rawString: String? { get }
 }
