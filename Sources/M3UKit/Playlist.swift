@@ -24,13 +24,13 @@
 import Foundation
 
 /// Object representing a playlist containing media items.
-public struct Playlist: Equatable, Hashable, Codable {
+public struct Playlist: Equatable, Hashable, Codable, Sendable {
 
   /// Object representing a media.
-  public struct Media: Equatable, Hashable, Codable {
+    public struct Media: Equatable, Hashable, Codable, Sendable {
 
     /// Object representing attributes for a media.
-    public struct Attributes: Equatable, Hashable, Codable {
+        public struct Attributes: Equatable, Hashable, Codable, Sendable {
       /// Create a new attributes object.
       /// - Parameters:
       ///   - id: id.
@@ -99,7 +99,7 @@ public struct Playlist: Equatable, Hashable, Codable {
     }
 
     /// Enum representing media kind.
-    public enum Kind: String, Equatable, Hashable, Codable {
+        public enum Kind: String, Equatable, Hashable, Codable, Sendable {
       case movie
       case series
       case live
